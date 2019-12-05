@@ -6,6 +6,7 @@ interface IArtistSpotifyLink {
   label: string;
   buttonColor: string;
   labelColor: string;
+  link: string;
 }
 
 interface IStyledArtistSpotifyLink {
@@ -14,11 +15,10 @@ interface IStyledArtistSpotifyLink {
 }
 
 const ArtistSpotifyLink = (props: IArtistSpotifyLink) => {
-  const linkRef = useRef(null);
+  const linkRef:any = useRef(null);
   const tl = gsap.timeline();
 
   useLayoutEffect(() => {
-    //@ts-ignore
     tl.to((linkRef.current), {
       delay: 1.5,
       opacity: 1,
@@ -28,11 +28,17 @@ const ArtistSpotifyLink = (props: IArtistSpotifyLink) => {
     })
   }, []);
 
+  function openLink(e:any, link:string) {
+    window.open(link);
+    e.preventDefault();
+  }
+
   return (
     <StyledArtistSpotifyLink
       backgroundColor={props.buttonColor}
       textColor={props.labelColor}
       ref={linkRef}
+      onClick={(e:any) => openLink(e, props.link)}
     >
       {props.label}
     </StyledArtistSpotifyLink>

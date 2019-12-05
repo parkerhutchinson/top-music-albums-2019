@@ -11,7 +11,7 @@ interface IArstistContentEffect {
 }
 
 const ArtistContentEffect = (props: IArstistContentEffect) => {
-  const titleRef = useRef(null);
+  const titleRef:any = useRef(null);
   const tl = gsap.timeline();
 
 
@@ -22,19 +22,19 @@ const ArtistContentEffect = (props: IArstistContentEffect) => {
   }
 
   useLayoutEffect(() => {
-    const spans = ReactDOM.findDOMNode(titleRef.current);
     //@ts-ignore
-    tl.to((spans.querySelector(props.element).childNodes), {
+    const spans = ReactDOM.findDOMNode(titleRef.current).querySelector(props.element).childNodes;
+    
+    tl.to((spans), {
       opacity: 1,
       top:0,
       stagger: {
         each: props.staggerDuration
       },
-      //@ts-ignore
       duration: props.duration,
       ease: 'expo'
     })
-  },[titleRef]);
+  },[titleRef.current]);
 
   return (
     <StyledTitle ref={titleRef}>

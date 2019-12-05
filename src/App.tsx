@@ -1,9 +1,15 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import styled, {createGlobalStyle} from 'styled-components';
 import artists from './store/artists';
 import ArtistCard from './components/artist/artistCard';
 
 const App: React.FC = () => {
+  const [index, setIndex] = useState(0);
+  function transitionTest() {
+    setTimeout(() => {
+      setIndex(1);
+    }, 2000)
+  }
   function populateArtists() {
     return artists.map((a:any, i:number) => 
       (
@@ -17,11 +23,14 @@ const App: React.FC = () => {
       )
     );
   }
+  useEffect(() => {
+    transitionTest();
+  }, [])
   return (
     <>
       <GlobalStyle />
       <StyledApp className="App">
-        {populateArtists()}
+        {populateArtists()[index]}
       </StyledApp>
     </>
   );

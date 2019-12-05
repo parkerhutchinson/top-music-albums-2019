@@ -34,8 +34,8 @@ const ArtistAlbum = (props: IAlbum) => {
     }, 300);
     
     return () => {
-      clearTimeout(timerRef.current);
-      clearTimeout(animTimeout);
+      window.clearTimeout(timerRef.current);
+      window.clearTimeout(animTimeout);
       setReady(false);
       setAnimIn(false);
     };
@@ -67,7 +67,7 @@ export default ArtistAlbum;
 const StyledCard = styled.div`
   position: relative;
   padding: 80px 0 0;
-  grid-column: 17 / span 10;
+  grid-column: 18 / span 10;
   img {
     display: block;
     width: 100%;

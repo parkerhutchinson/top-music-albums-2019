@@ -9,6 +9,7 @@ type TArtist = {
   name: string;
   albumTitle: string;
   albumArt: string;
+  spotifyLink: string;
 };
 
 type TColors = {
@@ -58,6 +59,7 @@ const ArtistCard = (props: IArtistCard) => {
             label="Listen On Spotify"
             buttonColor={color.primary}
             labelColor={color.secondary}
+            link={artist.spotifyLink}
           />
         </StyledContent>
 
@@ -93,13 +95,13 @@ const StyledArtistCard = styled.div`
     position: relative;
     z-index: 1;
     align-items: center;
-    max-width: 1500px;
+    max-width: 1600px;
     margin: 0 auto;
   }
 `;
 
 const StyledContent = styled.div`
-  grid-column: 2 / span 14;
+  grid-column: 2 / span 15;
   color: ${(p: IStyledColor) => p.color};
   position: relative;
   h1 {

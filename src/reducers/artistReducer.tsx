@@ -5,9 +5,9 @@ type TAction = {
 const artistReducer = (state:any, action:TAction) => {
   switch(action.type) {
     case 'next':
-      return state;
+      return {index: state.index + 1};
     case 'prev':
-      return state;
+      return {index: state.index - 1};
     default:
       throw new Error();
   }

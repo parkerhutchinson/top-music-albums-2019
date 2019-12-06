@@ -36,6 +36,7 @@ const StyledArtistSlideBackground = styled.div`
   top: 0;
   left: 0;
   z-index: 0;
+  transition: background 1s ease-out;
 `;
 
 const SuperBigRomanNumerals = styled.h1`

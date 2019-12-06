@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useRef, useReducer} from 'react';
+import React, {useReducer} from 'react';
 import styled, {createGlobalStyle} from 'styled-components';
 import artists from './store/artists';
 import ArtistSlide from './components/artist/artistSlide';
@@ -6,8 +6,9 @@ import ArtistSlideBackground from './components/artist/artistSlideBackground';
 import artistReducer from './reducers/artistReducer';
 
 const App: React.FC = () => {
-  const [count, setCount] = useState(0);
-  const timerRef = useRef<number>(0);
+  const [state, dispatch] = useReducer(artistReducer, {index: 0});
+  // const [count, setCount] = useState(0);
+  // const timerRef = useRef<number>(0);
 
   function populateArtists() {
     return artists.map((a:any, i:number) => 
@@ -37,17 +38,20 @@ const App: React.FC = () => {
   //     window.clearTimeout(timerRef.current);
   //   }
   // }, [count]);
+  // function nextSlide() {
+  //   dispatch(() => )
+  // }
 
   return (
     <>
       <GlobalStyle />
       <ArtistSlideBackground 
-        secondary="red"
-        tertiary="black"
-        index={1}
+        secondary={artists[state.index].colors.secondary}
+        tertiary={artists[state.index].colors.tertiary}
+        index={state.index}
       />
-      <StyledApp className="App">
-        {populateArtists()[count]}
+      <StyledApp className="App" onClick={() => dispatch({type: 'next'})}>
+        {populateArtists()[state.index]}
       </StyledApp>
     </>
   );

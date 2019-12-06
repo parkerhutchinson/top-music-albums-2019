@@ -37,6 +37,8 @@ const StyledArtistSlideBackground = styled.div`
   left: 0;
   z-index: 0;
   transition: background 1s ease-out;
+  display: flex;
+  align-items: stretch;
 `;
 
 const SuperBigRomanNumerals = styled.h1`

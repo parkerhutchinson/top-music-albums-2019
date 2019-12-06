@@ -7,8 +7,6 @@ import artistReducer from './reducers/artistReducer';
 
 const App: React.FC = () => {
   const [state, dispatch] = useReducer(artistReducer, {index: 0});
-  // const [count, setCount] = useState(0);
-  // const timerRef = useRef<number>(0);
 
   function populateArtists() {
     return artists.map((a:any, i:number) => 
@@ -24,31 +22,13 @@ const App: React.FC = () => {
     );
   }
 
-  // useEffect(() => { 
-  //   timerRef.current = window.setTimeout(() => {
-  //     if (count >= artists.length - 1) {
-  //       setCount(0)
-  //     } else {
-  //       setCount(count + 1);
-  //     }
-      
-  //   }, 2000);
-    
-  //   return () => {
-  //     window.clearTimeout(timerRef.current);
-  //   }
-  // }, [count]);
-  // function nextSlide() {
-  //   dispatch(() => )
-  // }
-
   return (
     <>
       <GlobalStyle />
       <ArtistSlideBackground 
         secondary={artists[state.index].colors.secondary}
         tertiary={artists[state.index].colors.tertiary}
-        index={state.index}
+        index={artists[state.index].id}
       />
       <StyledApp className="App" onClick={() => dispatch({type: 'next'})}>
         {populateArtists()[state.index]}

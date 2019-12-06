@@ -26,7 +26,7 @@ const ArtistSpotifyLink = (props: IArtistSpotifyLink) => {
       duration: 1,
       ease: 'expo'
     })
-  }, []);
+  });
 
   function openLink(e:any, link:string) {
     window.open(link);

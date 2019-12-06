@@ -1,7 +1,6 @@
-import React, { ReactNode } from "react";
+import React from "react";
 import styled from "styled-components";
 import ArtistAlbum from "./artistAlbum";
-import numerize from "../../helpers/intToRomanNumerals";
 import ArtistContentEffect from "./artistContentEffect";
 import ArtistSpotifyLink from "./artistSpotifyLink";
 
@@ -29,18 +28,10 @@ interface IStyledColor {
   color: string;
 }
 
-interface IStyledCard {
-  primary: string;
-  secondary: string;
-}
-
-const ArtistCard = (props: IArtistCard) => {
+const ArtistSlide = (props: IArtistCard) => {
   const { color, artist, copy } = props;
   return (
-    <StyledArtistCard primary={color.primary} secondary={color.secondary}>
-      <SuperBigRomanNumerals color={color.tertiary}>
-        {numerize(props.index)}
-      </SuperBigRomanNumerals>
+    <StyledArtistSlide>
       <div className="container">
         <StyledContent color={color.primary}>
           <ArtistContentEffect
@@ -71,16 +62,15 @@ const ArtistCard = (props: IArtistCard) => {
           backgroundColor={color.secondary}
         />
       </div>
-    </StyledArtistCard>
+    </StyledArtistSlide>
   );
 };
 
-export default ArtistCard;
+export default ArtistSlide;
 
-const StyledArtistCard = styled.div`
+const StyledArtistSlide = styled.div`
   width: 100%;
   height: 100vh;
-  background: ${(p: IStyledCard) => p.secondary};
   position: fixed;
   top: 0;
   left: 0;
@@ -115,15 +105,4 @@ const StyledContent = styled.div`
   }
 `;
 
-const SuperBigRomanNumerals = styled.h1`
-  font-size: 100rem;
-  color: ${(p: IStyledColor) => p.color};
-  position: absolute;
-  top: -5%;
-  left: 0;
-  line-height: 100rem;
-  width: 100%;
-  text-align: center;
-  font-weight: 900;
-  z-index: 0;
-`;
+

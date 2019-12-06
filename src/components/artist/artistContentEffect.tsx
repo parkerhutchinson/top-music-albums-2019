@@ -34,7 +34,7 @@ const ArtistContentEffect = (props: IArstistContentEffect) => {
       duration: props.duration,
       ease: 'expo'
     })
-  },[titleRef.current]);
+  });
 
   return (
     <StyledTitle ref={titleRef}>

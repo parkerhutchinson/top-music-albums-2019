@@ -67,7 +67,7 @@ export default ArtistAlbum;
 const StyledCard = styled.div`
   position: relative;
   padding: 80px 0 0;
-  grid-column: 18 / span 10;
+  grid-column: 18 / span 9;
   img {
     display: block;
     width: 100%;

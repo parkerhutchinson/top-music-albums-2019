@@ -1,19 +1,18 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef, useReducer} from 'react';
 import styled, {createGlobalStyle} from 'styled-components';
 import artists from './store/artists';
-import ArtistCard from './components/artist/artistCard';
+import ArtistSlide from './components/artist/artistSlide';
+import ArtistSlideBackground from './components/artist/artistSlideBackground';
+import artistReducer from './reducers/artistReducer';
 
 const App: React.FC = () => {
-  const [index, setIndex] = useState(0);
-  function transitionTest() {
-    setTimeout(() => {
-      setIndex(1);
-    }, 2000)
-  }
+  const [count, setCount] = useState(0);
+  const timerRef = useRef<number>(0);
+
   function populateArtists() {
     return artists.map((a:any, i:number) => 
       (
-        <ArtistCard
+        <ArtistSlide
           key={a.id}
           index={a.id}
           color={a.colors}
@@ -23,14 +22,32 @@ const App: React.FC = () => {
       )
     );
   }
-  useEffect(() => {
-    transitionTest();
-  }, [])
+
+  // useEffect(() => { 
+  //   timerRef.current = window.setTimeout(() => {
+  //     if (count >= artists.length - 1) {
+  //       setCount(0)
+  //     } else {
+  //       setCount(count + 1);
+  //     }
+      
+  //   }, 2000);
+    
+  //   return () => {
+  //     window.clearTimeout(timerRef.current);
+  //   }
+  // }, [count]);
+
   return (
     <>
       <GlobalStyle />
+      <ArtistSlideBackground 
+        secondary="red"
+        tertiary="black"
+        index={1}
+      />
       <StyledApp className="App">
-        {populateArtists()[index]}
+        {populateArtists()[count]}
       </StyledApp>
     </>
   );

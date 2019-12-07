@@ -1,12 +1,22 @@
-import React, {useReducer} from 'react';
+import React, {useReducer, useEffect, useState} from 'react';
 import styled, {createGlobalStyle} from 'styled-components';
 import artists from './store/artists';
 import ArtistSlide from './components/artist/artistSlide';
 import ArtistSlideBackground from './components/artist/artistSlideBackground';
 import artistReducer from './reducers/artistReducer';
+import NavigationAlbum from './components/navigation/navigationAlbum';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
 
-const App: React.FC = () => {
+
+const App = () => {
   const [state, dispatch] = useReducer(artistReducer, {index: 0});
+  const [indexes, setIndexes] = useState({next: 0, prev: 0});
+
+  function updateNavIndexes(index:number) {
+    const nextIndex = index + 1 > artists.length - 1 ? 0 : index + 1;
+    const prevIndex = index - 1 < 0 ? artists.length - 1 : index - 1;
+    setIndexes({next: nextIndex, prev: prevIndex});
+  }
 
   function populateArtists() {
     return artists.map((a:any, i:number) => 
@@ -22,6 +32,10 @@ const App: React.FC = () => {
     );
   }
 
+  useEffect(() => {
+    updateNavIndexes(state.index);
+  }, [state.index]);
+
   return (
     <>
       <GlobalStyle />
@@ -30,14 +44,30 @@ const App: React.FC = () => {
         tertiary={artists[state.index].colors.tertiary}
         index={artists[state.index].id}
       />
-      <StyledApp className="App" onClick={() => dispatch({type: 'next'})}>
+      <NavigationAlbum 
+        albumArt={artists[indexes.next].artist.albumArt}
+        index={artists[indexes.next].id}
+        direction="next"
+        callback={(direction: string) => dispatch({type: direction})}
+        primary={artists[indexes.next].colors.primary}
+        tertiary={artists[indexes.next].colors.tertiary}
+      />
+      <NavigationAlbum 
+        albumArt={artists[indexes.prev].artist.albumArt}
+        index={artists[indexes.prev].id}
+        direction="prev"
+        callback={(direction: string) => dispatch({type: direction})}
+        primary={artists[indexes.prev].colors.primary}
+        tertiary={artists[indexes.prev].colors.tertiary}
+      />
+      <StyledApp className="App">
         {populateArtists()[state.index]}
       </StyledApp>
     </>
   );
 }
 
-export default App;
+export default React.memo(App);
 
 const StyledApp = styled.div`
   width: 100%;

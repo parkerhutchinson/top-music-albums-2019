@@ -50,6 +50,40 @@ const artists = [
       bio: 'The moment you think of buying a Web Hosting Plan, you know one thing – So many choices, which one to choose? Whether you would want to choose Shared Linux Packages or a Unix Package or do you want to go for a shared windows package or packages reseller for hosting? Trust me, a lot of individuals stand confused when they see that there are thousands of plans yet very little resource of comparison.'
     }
   },
+  {
+    id: 4,
+    colors: {
+      primary: '#AAA0A2',
+      secondary: '#49514D',
+      tertiary: '#2D312F'
+    },
+    artist: {
+      name: 'The Japanese House',
+      albumTitle: 'Good at Falling',
+      albumArt: 'https://media.pitchfork.com/photos/5c7425267ad40308b4a8835c/1:1/w_600/JapaneseHouse_GoodAtFalling.jpg',
+      spotifyLink: 'spotify:album:7grVw3ARnEdYQAbJlXcPii' 
+    },
+    copy: {
+      bio: 'The moment you think of buying a Web Hosting Plan, you know one thing – So many choices, which one to choose? Whether you would want to choose Shared Linux Packages or a Unix Package or do you want to go for a shared windows package or packages reseller for hosting? Trust me, a lot of individuals stand confused when they see that there are thousands of plans yet very little resource of comparison.'
+    }
+  },
+  {
+    id: 5,
+    colors: {
+      primary: '#D32186',
+      secondary: '#181529',
+      tertiary: '#151224'
+    },
+    artist: {
+      name: 'Apparat',
+      albumTitle: 'LP5',
+      albumArt: 'https://musicglue-images-prod.global.ssl.fastly.net/apparat/product/apparat-lp5?u=aHR0cHM6Ly9tdXNpY2dsdWUtdXNlci1hcHAtcC0yLXAuczMuYW1hem9uYXdzLmNvbS9vcmlnaW5hbHMvMzQxMGU5MTgtM2E1MC00NzEyLWFiMWItNTRiMTE0OTU0YzMx&mode=contain&width=600&v=2',
+      spotifyLink: 'spotify:album:7grVw3ARnEdYQAbJlXcPii'
+    },
+    copy: {
+      bio: 'The moment you think of buying a Web Hosting Plan, you know one thing – So many choices, which one to choose? Whether you would want to choose Shared Linux Packages or a Unix Package or do you want to go for a shared windows package or packages reseller for hosting? Trust me, a lot of individuals stand confused when they see that there are thousands of plans yet very little resource of comparison.'
+    }
+  },
 ];
 
 
